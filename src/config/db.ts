@@ -37,7 +37,7 @@ const initDB = async () => {
       return_date DATE,
       fine_amount NUMERIC(10, 2) DEFAULT 0 CHECK (fine_amount>=0),
       status VARCHAR(30) NOT NULL CHECK(status IN ('active', 'returned', 'overdue')),
-      CHECK (due_date = borrow_date + INTERVAL '14 days'),
+      CHECK (due_date = borrow_date + INTERVAL '14 days')
       )
       `);
 };
