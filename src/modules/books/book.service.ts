@@ -43,6 +43,15 @@ const updateBook = async (payload: Record<string, unknown>, id: string) => {
 };
 
 const deleteBook = async (id: string) => {
+  const checkActiveLoan = await pool.query(
+    `SELECT id FROM loans WHERE book_id =$1 AND status='active'`,
+    [id],
+  );
+
+  if (checkActiveLoan.rows.length > 0) {
+    throw new Error("Can not delete book with active loan");
+  }
+
   const result = await pool.query(`DELETE FROM books WHERE id=$1`, [id]);
 
   return result;
@@ -53,5 +62,5 @@ export const bookServices = {
   getAllBooks,
   getSingleBook,
   updateBook,
-  deleteBook
+  deleteBook,
 };
