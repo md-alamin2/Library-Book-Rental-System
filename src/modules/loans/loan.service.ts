@@ -1,3 +1,4 @@
+import { JwtPayload } from "jsonwebtoken";
 import { pool } from "../../config/db";
 
 const createLoan = async (payload: Record<string, unknown>) => {
@@ -30,6 +31,19 @@ const createLoan = async (payload: Record<string, unknown>) => {
   return result;
 };
 
+const getLoan = async (payload: JwtPayload) => {
+  const { id, role } = payload;
+
+  if (role === "member") {
+    const result = await pool.query(`SELECT * FROM loans WHERE member_id=$1`, [id]);
+    return result;
+  } else {
+    const result = await pool.query(`select * FROM loans`);
+    return result;
+  }
+};
+
 export const loanServices = {
   createLoan,
+  getLoan,
 };
