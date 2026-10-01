@@ -35,7 +35,24 @@ const getLoan = async(req: Request, res: Response)=>{
     }
 }
 
+const updateLoan = async(req: Request, res: Response)=>{
+    try {
+        const result = await loanServices.updateLoan(req.params.loanId as string, req.user as JwtPayload);
+        res.status(200).json({
+            success: true,
+            message: "Loan updated successfully",
+            data: result.rows[0]
+        })
+    } catch (err: any) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
+}
+
 export const loanControllers = {
     createLoan,
-    getLoan
+    getLoan,
+    updateLoan
 }
