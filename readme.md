@@ -111,7 +111,7 @@ npm run dev
 
 ### Production Build
 ```bash
-npx tsc
+npm run build
 ```
 
 ---
