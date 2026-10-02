@@ -80,7 +80,7 @@ src/
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/md-alamin2/Library-Book-Rental-System.git
 cd library-book-rental-system
 ```
 
