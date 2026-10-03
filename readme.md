@@ -81,7 +81,7 @@ src/
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/md-alamin2/Library-Book-Rental-System.git
-cd library-book-rental-system
+cd Library Book Rental System
 ```
 
 ### 2. Install Dependencies
